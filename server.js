@@ -102,6 +102,15 @@ app.delete("/people/:id", async (req, res) => {
   }
 });
 
+// SHOW PAGE
+app.get("/people/:id", async (req, res) => {
+  try {
+      res.json(await People.findOne({"_id": req.params.id}));
+  } catch(err) {
+      res.status(400).json(error);
+  }
+});
+
 ///////////////////////////////
 // LISTENER
 ////////////////////////////////
